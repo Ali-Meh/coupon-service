@@ -14,7 +14,7 @@ export class Category extends DatedEntity {
     @Column({ nullable: false })
     name: string;
 
-    @OneToOne(type => Product,{ nullable: true })
+    @OneToOne(type => Product,{ nullable: true,cascade:true,onUpdate:"CASCADE" })
     @JoinColumn()
     product: Product;
 

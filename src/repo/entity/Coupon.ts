@@ -18,11 +18,11 @@ export class Coupon extends DatedEntity {
     @Column("decimal",{nullable: false})
     percent:number
 
-    @ManyToMany(() => Product)
+    @ManyToMany(() => Product,{cascade:true,onUpdate:"CASCADE"})
     @JoinTable()
     products: Product[];
 
-    @ManyToMany(() => Category)
+    @ManyToMany(() => Category,{cascade:true,onUpdate:"CASCADE"})
     @JoinTable()
     categories: Category[];
 }

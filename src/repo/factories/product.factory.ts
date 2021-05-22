@@ -1,6 +1,6 @@
 import Faker from 'faker'
-import { define, factory } from 'typeorm-seeding'
-import { Category, Coupon, Product } from '../entity'
+import { define } from 'typeorm-seeding'
+import { Product } from '../entity'
 
 define(Product,(faker: typeof Faker,context:any) => {
 

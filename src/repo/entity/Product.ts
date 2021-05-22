@@ -20,7 +20,7 @@ export class Product extends DatedEntity {
     @JoinColumn()
     category: Category;
 
-    @ManyToMany(() => Coupon)
+    @ManyToMany(() => Coupon,{cascade:true,onUpdate:"CASCADE"})
     @JoinTable()
     coupons: Coupon[];
 }

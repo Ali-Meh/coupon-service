@@ -1,14 +1,14 @@
 import Faker from 'faker'
-import { define, factory } from 'typeorm-seeding'
-import { Category, Coupon, Product } from '../entity'
+import { define } from 'typeorm-seeding'
+import { Coupon } from '../entity'
+import {Helper} from '../../components/util'
 
 define(Coupon,(faker: typeof Faker,context:any) => {
-  Faker.seed(Math.random()*Date.now()*Faker.datatype.number(50000))
-
+  faker.seed(Math.random()*Date.now()*100000000000000000000)
   const coupon = new Coupon()
-  coupon.name=Faker.commerce.productName();
-  coupon.percent=Faker.datatype.number({min:0,max:100,precision:3})
-  coupon.code=Faker.random.alphaNumeric(8)
+  coupon.name=faker.commerce.productName();
+  coupon.percent=faker.random.number({min:0,max:100,precision:3})
+  coupon.code=Helper.StringGenerator()
   coupon.save()
   return coupon
 })
