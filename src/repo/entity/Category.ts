@@ -1,11 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, Tree, TreeChildren,TreeParent,ManyToMany,JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, Tree, TreeChildren,TreeParent,ManyToMany } from "typeorm";
 import { DatedEntity } from "./base";
 import {Product} from '.'
 import { Coupon } from "./Coupon";
 
 
 @Entity()
-@Tree("nested-set")
+@Tree("materialized-path")
 export class Category extends DatedEntity {
 
     @PrimaryGeneratedColumn()
@@ -14,17 +14,17 @@ export class Category extends DatedEntity {
     @Column({ nullable: false })
     name: string;
 
-    @OneToOne(type => Product,{ nullable: true,cascade:true,onUpdate:"CASCADE" })
-    @JoinColumn()
-    product: Product;
-
-    @ManyToMany(() => Coupon)
-    @JoinTable()
-    coupons: Coupon[];
-
     @TreeChildren()
     children: Category[];
 
     @TreeParent()
     parent: Category;
+
+    @OneToOne(type => Product,product=>product.category,{ nullable: true,cascade:true,onUpdate:"CASCADE" })
+    product: Product;
+
+    @ManyToMany(() => Coupon,coupon=>coupon.categories)
+    coupons: Coupon[];
+
+
 }

@@ -9,6 +9,5 @@ define(Coupon,(faker: typeof Faker,context:any) => {
   coupon.name=faker.commerce.productName();
   coupon.percent=faker.random.number({min:0,max:100,precision:3})
   coupon.code=Helper.StringGenerator()
-  coupon.save()
   return coupon
 })

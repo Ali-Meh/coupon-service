@@ -16,11 +16,10 @@ export class Product extends DatedEntity {
     @Column("money")
     price: number
 
-    @OneToOne(type => Category)
+    @OneToOne(type => Category,category=>category.product)
     @JoinColumn()
     category: Category;
 
-    @ManyToMany(() => Coupon,{cascade:true,onUpdate:"CASCADE"})
-    @JoinTable()
+    @ManyToMany(() => Coupon,coupon=>coupon.products)
     coupons: Coupon[];
 }
