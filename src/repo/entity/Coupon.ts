@@ -15,7 +15,7 @@ export class Coupon extends DatedEntity {
     @Column({ unique: true, nullable: false })
     code: string;
 
-    @Column("float",{nullable: false})
+    @Column("decimal",{nullable: false})
     percent:number
 
     @ManyToMany(() => Product)

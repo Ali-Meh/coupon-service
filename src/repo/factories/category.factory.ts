@@ -17,8 +17,10 @@ define(Category,(faker: typeof Faker,context) => {
     if(Faker.datatype.boolean()){
       catchild.coupons=[coupon]
     }
+    catchild.name = Faker.commerce.department()
     catchild.product = factory(Product)({hasCoupon:Faker.datatype.boolean(),coupon}) as any
     catchild.parent = cat
+    catchild.save()
     cat.children=[catchild]
   }
 

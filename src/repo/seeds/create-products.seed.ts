@@ -4,6 +4,6 @@ import { Product } from '../entity'
 
 export default class CreateProducts implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
-    // await factory(Product)().create()
+    await factory(Product)().create()
     }
 }

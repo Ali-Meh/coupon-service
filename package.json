@@ -7,8 +7,10 @@
     "test": "jest --verbose",
     "start": "ts-node src/app.ts",
     "dev": "nodemon -e js,ts,json --exec npm start",
-    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
-    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "db:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "db:seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "db:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
+    "db:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
     "build": "tsc"
   },
   "repository": {
