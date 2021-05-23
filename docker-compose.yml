@@ -1,0 +1,42 @@
+version: "3"
+services:
+  coupon-service:
+    container_name: coupon-service
+    build:
+      context: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      APP_PORT: 3000
+    ports:
+      - "3000:3000"
+    networks:
+      - app
+
+  postgres:
+    container_name: postgres
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    volumes: 
+      - ./postgresdata:/var/lib/postgresql/data
+      - ./src/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
+    networks:
+      - app
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: temp
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
+
+networks: 
+  app:

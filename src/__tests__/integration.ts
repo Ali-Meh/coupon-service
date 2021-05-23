@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import request from 'supertest'
-import { createConnection,getRepository,getConnection } from "typeorm";
+import { createConnection,getConnection } from "typeorm";
 import { Category, Coupon, Product } from "../repo/entity";
 let baseurl = '/api/v1/products'//1/promotion/a6a711c494550e1c6ee2?productPrice=100&userId=120
 let index: any
