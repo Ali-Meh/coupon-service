@@ -9,11 +9,20 @@ to run in hot reload mode
 $ npm run dev
 ```
 
-## Best pracktices
+## Best practises 
 
 ### Security 
-* its better to use jwt or somthing validatable insteed of naked user_id
-* its better to rely on message bus or somthing like that rather than service descovery and internal rest apis
+* its better to use jwt or somthing validatable instead of just user_id
+* its better to rely on message bus and etc. rather than overheaded service descovery and internal rest apis
 
 ### Development
 * seperate dev, local and production enviruments
+* 
+
+### API
+
+> the api end point will be aviliable at the addres below
+
+```bash
+/api/v1/products/:product_id/promotion/:promotion_code?productPrice=100&userId=120
+```
