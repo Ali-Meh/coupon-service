@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable,Index } from "typeorm";
 import { DatedEntity } from "./base";
 import {Product,Category} from '.'
 
@@ -12,10 +12,11 @@ export class Coupon extends DatedEntity {
     @Column({ nullable: true })
     name: string;
 
+    @Index()
     @Column({ unique: true, nullable: false })
     code: string;
 
-    @Column("decimal",{nullable: false})
+    @Column("decimal")
     percent:number
 
     @ManyToMany(() => Product, product => product.coupons ,{cascade:true,onUpdate:"CASCADE"})

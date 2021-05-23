@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express'
+import productRouter from './products'
 const router = express.Router()
 
 
@@ -9,5 +10,7 @@ router.get("/ping", (req: Request, res: Response) => {
     })
 })
 
+
+router.use("/products",productRouter)
 
 export default router

@@ -5,7 +5,7 @@ import { Coupon } from "./Coupon";
 
 
 @Entity()
-@Tree("materialized-path")
+@Tree("closure-table")
 export class Category extends DatedEntity {
 
     @PrimaryGeneratedColumn()
